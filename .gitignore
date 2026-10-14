@@ -3,3 +3,5 @@ dist/
 data/cshapes-original.geojson
 test-results/
 playwright-report/
+.DS_Store
+.github/.DS_Store
