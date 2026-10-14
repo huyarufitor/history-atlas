@@ -14,6 +14,18 @@ pnpm dev
 
 默认地址：http://127.0.0.1:5173 。地图数据已保存在 `public/data`，无需地图 API key，运行时不依赖外部字体或地图瓦片。
 
+## GitHub Pages 部署
+
+仓库：https://github.com/huyarufitor/history-atlas
+
+网站地址：https://huyarufitor.github.io/history-atlas/
+
+`.github/workflows/deploy.yml` 在推送到 `master` 时自动执行安装、lint、测试、类型检查和构建，再发布 `dist`。也可以在 Actions 页面手动运行。仓库的 Settings → Pages → Source 需要选择 GitHub Actions。
+
+部署构建命令为 `pnpm build --base=/history-atlas/`。网页资源、地图数据和资料链接均使用这个站点前缀，本地开发仍使用根路径 `/`。
+
+以后如更改仓库名称，需要同步修改构建命令里的前缀；绑定指向站点根目录的自定义域名时改为 `--base=/`，并在 Pages 设置和域名服务商处配置域名。
+
 ## 准确性优先
 
 用户已选择优先考证历史国界。当前为可运行的资料探索和核查基础，**不是已完成独立考证的全球精确地图**。所有640条来源记录保持未复核状态；可按具体日期检索、查看历次边界版本及原始数据行号。详细发现、资料缺口、德国／苏联考证清单见 `docs/research/2026-10-14-source-audit.md`。

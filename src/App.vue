@@ -12,6 +12,7 @@ import {
   type Border,
 } from './history'
 import { events, type HistoryEvent } from './events'
+const baseUrl = import.meta.env.BASE_URL
 const borders = shallowRef<Border[]>([])
 const loading = ref(true)
 const error = ref('')
@@ -97,7 +98,7 @@ async function loadData() {
   loading.value = true
   error.value = ''
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}data/borders.geojson`)
+    const response = await fetch(`${baseUrl}data/borders.geojson`)
     if (!response.ok) throw new Error('地图数据暂时无法读取')
     const json = await response.json()
     if (json.type !== 'FeatureCollection' || !Array.isArray(json.features))
@@ -643,10 +644,10 @@ onBeforeUnmount(() => {
               target="_blank"
               rel="noopener noreferrer"
               >编码说明 ↗</a
-            ><a href="/data/provenance.json" target="_blank" rel="noopener noreferrer"
+            ><a :href="`${baseUrl}data/provenance.json`" target="_blank" rel="noopener noreferrer"
               >本地数据记录 ↗</a
             >
-            <a href="/data/research-register.json" target="_blank" rel="noopener noreferrer"
+            <a :href="`${baseUrl}data/research-register.json`" target="_blank" rel="noopener noreferrer"
               >边界核查台账 ↗</a
             >
           </div>
@@ -694,7 +695,7 @@ onBeforeUnmount(() => {
               target="_blank"
               rel="noopener noreferrer"
               >原始数据 ↗</a
-            ><a href="/data/research-register.json" target="_blank" rel="noopener noreferrer"
+            ><a :href="`${baseUrl}data/research-register.json`" target="_blank" rel="noopener noreferrer"
               >下载核查台账 ↗</a
             >
           </div>

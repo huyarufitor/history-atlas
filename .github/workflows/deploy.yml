@@ -1,4 +1,4 @@
-name: history-atlas
+name: Deploy GitHub Pages
 
 on:
   push:
@@ -12,11 +12,12 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -33,10 +34,14 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm test
-      - run: pnpm build --base=/history-atlas/
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint and test
+        run: pnpm lint && pnpm test
+
+      - name: Typecheck and build for the repository URL
+        run: pnpm build --base=/history-atlas/
 
       - uses: actions/configure-pages@v5
 
