@@ -1,0 +1,21 @@
+{
+  "source": "CShapes 2.0, ETH Zurich",
+  "url": "https://icr.ethz.ch/data/cshapes/CShapes-2.0.geojson",
+  "retrieved": "2026-10-14",
+  "sha256": "384b1ea90b9419f30a858d7ec237c85a22c60d1b35b5f85f215a1204f9989d42",
+  "license": "CC BY-NC-SA 4.0",
+  "sourceFeatures": 710,
+  "features": 640,
+  "coverageStart": "1900-01-01",
+  "coverageEnd": "2019-12-31",
+  "reviewStatus": "source-imported-not-independently-verified",
+  "modifications": "Filter records ending before 1900; retain explicit GW calendar date fields; preserve all source coordinate precision; reverse rings as needed for D3 spherical winding. Preserve original 1-based source feature index and hash of original geometry. No inferred borders or dates.",
+  "knownLimitations": [
+    "2018 codebook p.3: some dates use first day of month/year as placeholders; individual date precision is not provided in GeoJSON.",
+    "2018 codebook p.4: excludes territorial changes below 10000 sq km and many temporary wartime changes.",
+    "2018 codebook p.4: some modern borders backdated when evidence unavailable; some conflicting maps resolved by preference for current borders.",
+    "GeoJSON lacks status, ruledby and b_def columns described in codebook. Dependency status cannot be safely inferred from feature name.",
+    "2020-2026 are outside available coverage and must remain empty.",
+    "A new record may mean capital or attribute change, not geometry change."
+  ]
+}
